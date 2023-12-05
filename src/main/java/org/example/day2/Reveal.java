@@ -1,5 +1,7 @@
 package org.example.day2;
 
+import java.util.Optional;
+
 public class Reveal {
     private Integer red;
     private Integer blue;
@@ -22,6 +24,10 @@ public class Reveal {
         return green;
     }
 
+    public Optional<Integer> getOptionalGreen() {
+        return Optional.of(green);
+    }
+
     public void setGreen(int green) {
         this.green = green;
     }
@@ -30,12 +36,20 @@ public class Reveal {
         return blue;
     }
 
+    public Optional<Integer> getOptionalBlue() {
+        return Optional.of(blue);
+    }
+
     public void setBlue(int blue) {
         this.blue = blue;
     }
 
     public Integer getRed() {
         return red;
+    }
+
+    public Optional<Integer> getOptionalRed() {
+        return Optional.of(red);
     }
 
     public void setRed(int red) {
@@ -55,4 +69,6 @@ public class Reveal {
         vRed = (this.red == null || this.red <= red);
         return (vBlue && vGreen && vRed);
     }
+
+
 }

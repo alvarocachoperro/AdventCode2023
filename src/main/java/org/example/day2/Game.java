@@ -1,7 +1,7 @@
 package org.example.day2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Game {
     private int id;
@@ -55,6 +55,20 @@ public class Game {
             valid = this.revealed.get(i).isValid(red, green, blue);
             i++;
         }
-
     }
+
+    public int getPower() {
+        Optional<Integer> maxBlue = revealed.stream().map(Reveal::getBlue).collect(
+                Collectors.toList()).stream().filter(Objects::nonNull).max(Integer::compareTo);
+        Optional<Integer> maxGreen =
+                revealed.stream().map(Reveal::getGreen).collect(Collectors.toList()).stream().filter(
+                        Objects::nonNull).max(Integer::compareTo);
+        Optional<Integer> maxRed = revealed.stream().map(Reveal::getRed).collect(Collectors.toList()).stream().filter(
+                Objects::nonNull).max(Integer::compareTo);
+
+     return (maxBlue.orElse(1))*
+             (maxGreen.orElse(1))*
+             (maxRed.orElse(1));
+    }
+
 }
